@@ -8,7 +8,7 @@ class ArticulosSeeder extends Seeder
     public function run()
     {
        for ($i=0; $i<10; $i++){
-			articulos::create([
+			Articulos::create([
 		    	'Nombre' 	    =>	'Articulo' . $i,
 		    	'Imagen'        =>	'imagen' . $i . '.jpg',
                 'Precio'	    =>	'1'.$i,

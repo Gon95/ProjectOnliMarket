@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Articulos;
+use App\Articulo;
 
 class ArticulosController extends Controller
 {
@@ -14,8 +14,8 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-        $articulos=Articulos::all();    //datos de la tabla
-        return view('articulos.index', ['articulos'=>$articulos]);
+        $articulos=Articulo::all();    //datos de la tabla
+        return view('CRUD/Articulos/index', ['articulos'=>$articulos]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ArticulosController extends Controller
      */
     public function create()
     {
-        //
+        return view('articulos.create');
     }
 
     /**
