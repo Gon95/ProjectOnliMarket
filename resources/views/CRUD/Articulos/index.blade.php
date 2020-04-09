@@ -1,6 +1,6 @@
 @extends('Layouts.layoutArticulos')
 @section('contenido')
-<div class="card-panel pink darken-4">
+<div class="card-panel red darken-4">
     <nav class="nav-extended grey">
         <div class="nav-wrapper">
         <a href="#" class="brand-logo"><i class="material-icons">cloud</i>LOGOTIPO</a>
@@ -35,35 +35,53 @@
         </form>
     </nav>
     <div class="panel-heading">
-        <h2 class="grey-text">Articulos</h2>
+        <h2 class="grey-text  text-lighten-5">Articulos</h2>
     </div>
     <div class="row">
     <table class="highlight centered responsive-table">
         <thead>
             <tr>
-                <th class="grey-text">ID</th>
-                <th class="grey-text">Nombre</th>
-                <th class="grey-text">Imagen</th>
-                <th class="grey-text">Precio</th>
-                <th class="grey-text">Unidad</th>
-                <th class="grey-text">Stock</th>
-                <th class="grey-text">Descripcion</th>
+                <th class="grey-text text-lighten-5">ID</th>
+                <th class="grey-text text-lighten-5">Nombre</th>
+                <th class="grey-text text-lighten-5">Imagen</th>
+                <th class="grey-text text-lighten-5">Precio</th>
+                <th class="grey-text text-lighten-5">Unidad</th>
+                <th class="grey-text text-lighten-5">Stock</th>
+                <th class="grey-text text-lighten-5">Descripcion</th>
+                <th class="grey-text text-lighten-5">Acciones</th>   
             </tr>
         </thead>
         <tbody>         
             @foreach($articulos as $articulo)
                 <tr>
-                    <td class="grey-text">{!! $articulo->id !!}</td>
-                    <td class="grey-text">{!! $articulo->Nombre !!}</td>
-                    <td class="grey-text">{!! $articulo->Imagen !!}</td>
-                    <td class="grey-text">{!! $articulo->Precio !!}</td>
-                    <td class="grey-text">{!! $articulo->Unidad !!}</td>
-                    <td class="grey-text">{!! $articulo->Stock ? 'En Stock' : 'Fuera de Stock'!!}</td>
-                    <td class="grey-text">{!! $articulo->Descripcion !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->id !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Nombre !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Imagen !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Precio !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Unidad !!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Stock ? 'En Stock' : 'Fuera de Stock'!!}</td>
+                    <td class="grey-text text-lighten-5">{!! $articulo->Descripcion !!}</td>
+                    <td>
+                        <a href="{{ route('articulos.show', $articulo->id) }}" class="aves-effect waves-light btn grey darken-1">Visualizar</a>
+                        <a href="{{ route('articulos.edit', $articulo->id) }}" class="aves-effect waves-light btn grey darken-1">Editar</a>
+                        <br><br>
+                        <form action="{{ route('articulos.destroy', $articulo->id) }}" method="POST">
+
+                            @method('DELETE')
+                            @csrf
+        
+                            <input type="submit" value="ELIMINAR" class="aves-effect waves-light btn grey darken-1">
+                          </form>
+                    </td>
+                    <td>
+                          
+                        
+                      </td>
                 </tr>
             @endforeach   
         </tbody>
     </table>
+    <a href="{{ route('articulos.create', $articulo->id) }}" class="aves-effect waves-light btn grey darken-1">Añadir</a>
     </div>
     <footer class="page-footer grey">
           <div class="container">
